@@ -7,13 +7,13 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/newrelic/go-agent/v3/integrations/nrredis-v9"
-	"github.com/redis/go-redis/v9"
-	"github.com/rs/zerolog"
 	"github.com/PrathmeshAdhav2006/go-boilerplate/internal/config"
 	"github.com/PrathmeshAdhav2006/go-boilerplate/internal/database"
 	"github.com/PrathmeshAdhav2006/go-boilerplate/internal/lib/job"
 	loggerPkg "github.com/PrathmeshAdhav2006/go-boilerplate/internal/logger"
+	"github.com/newrelic/go-agent/v3/integrations/nrredis-v9"
+	"github.com/redis/go-redis/v9"
+	"github.com/rs/zerolog"
 )
 
 type Server struct {
@@ -98,6 +98,7 @@ func (s *Server) Start() error {
 	return s.httpServer.ListenAndServe()
 }
 
+// Shutdown gracefully shuts down the server, closing the database connection and stopping the job service.
 func (s *Server) Shutdown(ctx context.Context) error {
 	if err := s.httpServer.Shutdown(ctx); err != nil {
 		return fmt.Errorf("failed to shutdown HTTP server: %w", err)
