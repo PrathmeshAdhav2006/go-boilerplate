@@ -85,6 +85,7 @@ func (s *Server) SetupHTTPServer(handler http.Handler) {
 	}
 }
 
+// Start starts the HTTP server and listens for incoming requests.
 func (s *Server) Start() error {
 	if s.httpServer == nil {
 		return errors.New("HTTP server not initialized")
