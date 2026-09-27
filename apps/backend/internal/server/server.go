@@ -75,6 +75,7 @@ func New(cfg *config.Config, logger *zerolog.Logger, loggerService *loggerPkg.Lo
 	return server, nil
 }
 
+// SetupHTTPServer sets up the HTTP server with the provided handler and configuration.
 func (s *Server) SetupHTTPServer(handler http.Handler) {
 	s.httpServer = &http.Server{
 		Addr:         ":" + s.Config.Server.Port,
