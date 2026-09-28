@@ -1,9 +1,9 @@
 package job
 
 import (
+	"github.com/PrathmeshAdhav2006/go-boilerplate/internal/config"
 	"github.com/hibiken/asynq"
 	"github.com/rs/zerolog"
-	"github.com/PrathmeshAdhav2006/go-boilerplate/internal/config"
 )
 
 type JobService struct {
@@ -38,6 +38,7 @@ func NewJobService(logger *zerolog.Logger, cfg *config.Config) *JobService {
 	}
 }
 
+// InitHandlers initializes the task handlers for the job service
 func (j *JobService) Start() error {
 	// Register task handlers
 	mux := asynq.NewServeMux()
